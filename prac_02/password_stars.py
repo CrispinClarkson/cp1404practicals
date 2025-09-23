@@ -2,18 +2,18 @@ LENGTH = 10
 
 
 def main():
-    """  """
+    """Password star program"""
     password = get_password()
     print_stars(password)
 
 
 def print_stars(password):
-    """ Print stars based on length of password"""
+    """Print stars based on length of password."""
     print("*" * len(password))
 
 
 def get_password():
-    """ Get valid password  """
+    """Get valid password."""
     password = input("Enter password: ")
     while len(password) < LENGTH:
         print("Password is invalid, try again")
