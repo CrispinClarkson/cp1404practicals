@@ -44,7 +44,7 @@ def get_valid_score():
 
 
 def show_stars(score):
-    """Show amount of stars based on score."""
+    """Show number of stars based on score."""
     for i in range(score):
         print("*", end=" ")
     print()
