@@ -1,4 +1,5 @@
 def main():
+    """Score program."""
     score = get_valid_score()
     print("Menu: ")
     choice = input("> ").upper()
@@ -17,6 +18,7 @@ def main():
 
 
 def determine_result(score):
+    """Determine result based on score."""
     if score < 0 or score > 100:
         return "Invalid score"
     elif score >= 90:
@@ -28,10 +30,12 @@ def determine_result(score):
 
 
 def print_result(score):
+    """Print result."""
     print(f"Score: {score} is {determine_result(score)}")
 
 
 def get_valid_score():
+    """Get valid score."""
     score = int(input("Enter Score: "))
     while score < 0 or score > 100:
         print("Invalid score")
@@ -40,6 +44,7 @@ def get_valid_score():
 
 
 def show_stars(score):
+    """Show amount of stars based on score."""
     for i in range(score):
         print("*", end=" ")
     print()
