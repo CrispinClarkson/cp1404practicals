@@ -1,9 +1,5 @@
 """
 CP1404/CP5632 - Practical
-Pseudocode for temperature conversion
-get fahrenheit
-celsius = 5 / 9 * (fahrenheit - 32)
-print celsius
 """
 
 
