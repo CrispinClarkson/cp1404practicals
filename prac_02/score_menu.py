@@ -1,17 +1,14 @@
-import random
-
-
 def main():
-    name = ""
+    score = get_valid_score()
     print("Menu: ")
     choice = input("> ").upper()
     while choice != "Q":
         if choice == "G":
-            name = get_valid_name()
+            score = get_valid_score()
         elif choice == "P":
-            print_greeting(name)
+            print_result(score)
         elif choice == "S":
-            print_secret_name(name)
+            show_stars(score)
         else:
             print("Invalid choice")
         print("Menu: ")
@@ -19,29 +16,33 @@ def main():
     print("Farewell")
 
 
-def print_greeting(name):
-    length = len(name)
-    print_line(length)
-    print(name)
-    print_line(length)
+def determine_result(score):
+    if score < 0 or score > 100:
+        return "Invalid score"
+    elif score >= 90:
+        return "Excellent"
+    elif score >= 50:
+        return "Passable"
+    else:
+        return "Bad"
 
 
-def get_valid_name():
-    name = input("Enter your name: ")
-    while name == "":
-        print("Invalid name")
-        name = input("Enter your name: ")
-    return name
+def print_result(score):
+    print(f"Score: {score} is {determine_result(score)}")
 
 
-def print_line(length):
-    print('-' * length)
+def get_valid_score():
+    score = int(input("Enter Score: "))
+    while score < 0 or score > 100:
+        print("Invalid score")
+        score = int(input("Enter Score: "))
+    return score
 
 
-def print_secret_name(name):
-    letters = list(name)
-    random.shuffle(letters)
-    print("".join(letters))
+def show_stars(score):
+    for i in range(score):
+        print("*", end=" ")
+    print()
 
 
 main()
