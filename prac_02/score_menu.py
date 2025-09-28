@@ -1,7 +1,13 @@
+MENU = """(G)et valid score
+(P)rint result
+(S)how stars
+(Q)uit"""
+
+
 def main():
     """Score program."""
     score = get_valid_score()
-    print("Menu: ")
+    print(MENU)
     choice = input("> ").upper()
     while choice != "Q":
         if choice == "G":
@@ -12,7 +18,7 @@ def main():
             show_stars(score)
         else:
             print("Invalid choice")
-        print("Menu: ")
+        print(MENU)
         choice = input("> ").upper()
     print("Farewell")
 
