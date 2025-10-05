@@ -18,6 +18,6 @@ except ValueError:
     print("Numerator and denominator must be valid numbers!")
 print("Finished.")
 
-# ValueError occurs when either floats or strings are inserted into the prompt
+# ValueError occurs when either floats or strings (non-integers) are inserted into the prompt
 # ZeroDivisionError occurs when the number is divided by zero
 # Can check if denominator is zero in if statement
