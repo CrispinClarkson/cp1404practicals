@@ -10,3 +10,12 @@ print(f"The largest number is {max(numbers)}")
 print(f"The average number is {sum(numbers)/len(numbers)}")
 
 
+# 2 Woefully inadequate security checker
+usernames = ['jimbo', 'giltson98', 'derekf', 'WhatSup', 'NicolEye', 'swei45', 'BaseInterpreterInterface', 'BaseStdIn',
+             'Command', 'ExecState', 'InteractiveConsole', 'InterpreterInterface', 'StartServer', 'bob']
+
+username = input('Please enter your username: ')
+if username in usernames:
+    print("Access granted")
+else:
+    print("Access denied")
