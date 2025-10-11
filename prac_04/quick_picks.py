@@ -6,7 +6,7 @@ MAX_NUMBER = 45
 
 
 def main():
-    """Quick picks program"""
+    """Quick picks program."""
     number_of_quick_picks = int(input("How many quick picks? "))
     while number_of_quick_picks < 0:
         print("Invalid number")
