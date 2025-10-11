@@ -29,7 +29,7 @@ def load_subjects(filename=FILENAME):
 
 
 def display_subjects(subjects):
-    """Display subject data"""
+    """Display subject data."""
     for subject in subjects:
         print(f"{subject[0]} is taught by {subject[1]:12} and has {subject[2]:3} students")
 
