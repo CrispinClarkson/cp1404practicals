@@ -9,6 +9,9 @@ CODE_TO_NAME = {"QLD": "Queensland", "NSW": "New South Wales", "NT": "Northern T
                 "ACT": "Australian Capital Territory", "VIC": "Victoria", "TAS": "Tasmania", "SA": "South Australia"}
 print(CODE_TO_NAME)
 
+for name, state in CODE_TO_NAME.items():
+    print(f"{name:3} is {state}")
+
 state_code = input("Enter short state: ").upper()
 while state_code != "":
     if state_code in CODE_TO_NAME:
@@ -17,5 +20,4 @@ while state_code != "":
         print("Invalid short state")
     state_code = input("Enter short state: ").upper()
 
-for name, state in CODE_TO_NAME.items():
-    print(name, "is", state)
+
