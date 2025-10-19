@@ -10,12 +10,14 @@ INDEX_CHAMPION = 2
 
 
 def main():
+    """Read data from csv file, print champion name and country."""
     records = load_records(FILENAME)
     champion_to_count, countries = process_records(records)
     display_results(champion_to_count, countries)
 
 
 def load_records(filename):
+    """Load records from csv file."""
     records = []
     with open(filename, "r", encoding="utf-8-sig") as input_file:
         input_file.readline()
@@ -26,6 +28,7 @@ def load_records(filename):
 
 
 def process_records(records):
+    """Create dictionary of champion name and country."""
     champion_to_count = {}
     countries = set()
     for record in records:
@@ -38,6 +41,7 @@ def process_records(records):
 
 
 def display_results(champion_to_count, countries):
+    """Print champion name and country."""
     print("Wimbledon Champions: ")
     for name, count in champion_to_count.items():
         print(f"{name} {count}")
