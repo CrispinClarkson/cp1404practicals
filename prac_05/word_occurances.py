@@ -5,7 +5,8 @@ Actual: 27 minutes
 """
 
 word_to_count = {}
-text = "This is only an example text hello hi there hi there again this is still example text"
+# text = "This is only an example text hello hi there hi there again this is still example text"
+text = input("Text: ")
 words = text.split()
 
 for word in words:
@@ -14,6 +15,6 @@ for word in words:
 
 max_length = max(len(word) for word in words)
 
-print(text)
+# print(text)
 for word in sorted(word_to_count):
     print(f"{word:{max_length}} : {word_to_count[word]}")
