@@ -1,8 +1,11 @@
 """
 Guitar
 Estimate: 18 minutes
-Actual:
+Actual: 15 minutes
 """
+
+CURRENT_YEAR = 2025
+VINTAGE_AGE = 50
 
 
 class Guitar:
@@ -17,3 +20,11 @@ class Guitar:
     def __str__(self):
         """Return a string representation of the Guitar."""
         return f"{self.name} ({self.year}) : ${self.cost:.2f}"
+
+    def get_age(self):
+        """Return the age of the Guitar."""
+        return CURRENT_YEAR - self.year
+
+    def is_vintage(self):
+        """Return True if the Guitar is vintage."""
+        return self.get_age() >= VINTAGE_AGE
