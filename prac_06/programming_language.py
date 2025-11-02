@@ -1,5 +1,5 @@
 class ProgrammingLanguage:
-    """..."""
+    """Programming language class to determine language status'."""
 
     def __init__(self, name, typing, reflection, year):
         """Initialise a programming language instance. """
