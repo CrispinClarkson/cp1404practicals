@@ -27,7 +27,7 @@ def main():
         vintage_mark = ""
         if guitar.is_vintage():
             vintage_mark = "(vintage)"
-        print(f"Guitar {i}: {guitar.name:>20} ({guitar.year}), worth $ {guitar.cost:10,.2f} {vintage_mark}")
+        print(f"Guitar {i}: {guitar.name:>20} ({guitar.year}), worth ${guitar.cost:10,.2f} {vintage_mark}")
 
 
 main()
