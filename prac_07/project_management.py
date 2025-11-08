@@ -2,8 +2,6 @@
 Estimated Time: 2:30 hours
 Actual Time:
 """
-from _pyrepl.completing_reader import complete
-from html.parser import incomplete
 
 from prac_07.project import Project
 
@@ -13,7 +11,7 @@ MENU = ("- (L)oad projects \n- (S)ave projects \n- (D)isplay projects \n- (F)ilt
 
 
 def main():
-    """..."""
+    """Project Management Program."""
     print("Welcome to Pythonic Project Management")
     projects = load_projects(DEFAULT_FILENAME)
     print(f"Loaded {len(projects)} projects loaded from {DEFAULT_FILENAME}")
@@ -40,7 +38,7 @@ def main():
 
 
 def load_projects(filename=DEFAULT_FILENAME):
-    """..."""
+    """Load projects from file."""
     projects = []
     with open(filename, "r") as input_file:
         input_file.readline()
@@ -60,6 +58,7 @@ def save_projects():
 
 
 def display_projects(projects):
+    """Display projects and format through complete and incomplete projects."""
     incomplete_projects = [project for project in projects if not project.is_complete()]
     complete_projects = [project for project in projects if project.is_complete()]
 
@@ -73,18 +72,22 @@ def display_projects(projects):
 
 
 def filter_projects():
+    """Filter projects by date."""
     pass
 
 
 def add_projects():
+    """Add new projects."""
     pass
 
 
 def update_projects():
+    """Update projects."""
     pass
 
 
 def quit_projects():
+    """Quit projects."""
     pass
 
 
