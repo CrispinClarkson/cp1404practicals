@@ -2,9 +2,6 @@
 Estimated Time: 2:30 hours
 Actual Time:
 """
-from _pyrepl.completing_reader import complete
-from html.parser import incomplete
-
 from prac_07.project import Project
 
 DEFAULT_FILENAME = "projects.txt"
@@ -60,16 +57,7 @@ def save_projects():
 
 
 def display_projects(projects):
-    incomplete_projects = [project for project in projects if not project.is_complete()]
-    complete_projects = [project for project in projects if project.is_complete()]
-
-    print("Incomplete projects:")
-    for project in sorted(incomplete_projects):
-        print(f"  {project}")
-
-    print("Completed projects:")
-    for project in sorted(complete_projects):
-        print(f"  {project}")
+    print(projects)
 
 
 def filter_projects():
