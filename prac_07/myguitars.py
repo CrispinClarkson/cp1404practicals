@@ -10,6 +10,7 @@ def main():
         parts = line.strip().split(',')
         guitars.append(Guitar(parts[0], parts[1], parts[2]))
     # print(guitars)
+    guitars.sort()
 
     for guitar in guitars:
         print(f"Guitar: {guitar.name:<30}, Year: {guitar.year:<6}, Cost: ${guitar.cost}")
