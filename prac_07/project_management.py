@@ -2,7 +2,7 @@
 Estimated Time: 2:30 hours
 Actual Time:
 """
-
+import datetime
 from prac_07.project import Project
 
 DEFAULT_FILENAME = "projects.txt"
@@ -21,7 +21,7 @@ def main():
         if choice == "L":
             load_projects(filename=DEFAULT_FILENAME)
         elif choice == "S":
-            save_projects()
+            save_projects(projects)
         elif choice == "D":
             display_projects(projects)
         elif choice == "F":
@@ -49,12 +49,19 @@ def load_projects(filename=DEFAULT_FILENAME):
             priority = int(parts[2])
             cost_estimation = float(parts[3])
             completion_percentage = int(parts[4])
+            start_date = datetime.datetime.strptime(start_date, "%d/%m/%Y").date()
+
             projects.append(Project(name, start_date, priority, cost_estimation, completion_percentage))
     return projects
 
 
-def save_projects():
-    pass
+def save_projects(projects):
+    save_file = input("What file would you like to save to? ")
+    with open(save_file, "w") as output_file:
+        for project in projects:
+            print(f"{project.name} {project.start_date.strftime('%d/%m/%Y')} {project.priority} {project.cost_estimation}"
+                  f"{project.completion_percentage}", file=output_file)
+        print(f"{len(projects)} projects saved to {save_file}")
 
 
 def display_projects(projects):
