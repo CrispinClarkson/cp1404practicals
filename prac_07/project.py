@@ -8,13 +8,14 @@ class Project:
         self.completion_percentage = completion_percentage
 
     def __str__(self):
-        pass
+        return (f"{self.name}, start: {self.start_date}, priority {self.priority},"
+                f"estimate: ${self.cost_estimation:.2f}, completion: {self.completion_percentage}%")
 
     def __repr__(self):
-        pass
+        return str(self)
 
     def is_complete(self):
-        pass
+        return self.completion_percentage == 100
 
     def __lt__(self, other):
         pass
