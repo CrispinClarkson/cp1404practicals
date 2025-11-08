@@ -2,7 +2,9 @@
 Estimated Time: 2:30 hours
 Actual Time:
 """
+from prac_07.project import Project
 
+DEFAULT_FILENAME = "projects.txt"
 MENU = ("- (L)oad projects \n- (S)ave projects \n- (D)isplay projects \n- (F)ilter projects by date"
         "\n- (A)dd new projects \n- (U)pdate project \n- (Q)uit")
 
@@ -10,15 +12,17 @@ MENU = ("- (L)oad projects \n- (S)ave projects \n- (D)isplay projects \n- (F)ilt
 def main():
     """..."""
     print("Welcome to Pythonic Project Management")
+    projects = load_projects(DEFAULT_FILENAME)
+    print(f"Loaded {len(projects)} projects loaded from {DEFAULT_FILENAME}")
     print(MENU)
     choice = input(">>> ").upper()
     while choice != "Q":
         if choice == "L":
-            load_projects()
+            load_projects(filename=DEFAULT_FILENAME)
         elif choice == "S":
             save_projects()
         elif choice == "D":
-            display_projects()
+            display_projects(projects)
         elif choice == "F":
             filter_projects()
         elif choice == "A":
@@ -32,16 +36,28 @@ def main():
     quit_projects()
 
 
-def load_projects():
-    pass
+def load_projects(filename=DEFAULT_FILENAME):
+    """..."""
+    projects = []
+    with open(filename, "r") as input_file:
+        input_file.readline()
+        for line in input_file:
+            parts = line.strip().split("\t")
+            name = parts[0]
+            start_date = (parts[1])
+            priority = int(parts[2])
+            cost_estimation = float(parts[3])
+            completion_percentage = int(parts[4])
+            projects.append(Project(name, start_date, priority, cost_estimation, completion_percentage))
+    return projects
 
 
 def save_projects():
     pass
 
 
-def display_projects():
-    pass
+def display_projects(projects):
+    print(projects)
 
 
 def filter_projects():
