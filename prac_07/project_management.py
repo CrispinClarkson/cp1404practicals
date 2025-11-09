@@ -89,7 +89,7 @@ def add_projects(projects):
     name = input("Name: ")
     start_date = input("Start date (dd/mm/yyyy): ")
     start_date_converted = datetime.datetime.strptime(start_date, "%d/%m/%Y").date()
-    priority = int(input("Priority: "))
+    priority = get_valid_number("Priority: ", 0, 10)
     cost_estimation = float(input("Cost Estimate: $"))
     completion_percentage = int(input("Percent Complete: "))
     projects.append(Project(name, start_date, priority, cost_estimation, completion_percentage))
@@ -119,6 +119,24 @@ def quit_projects(projects):
     if save_choice == "Y":
         save_projects(projects)
     print("Thank you for using custom-built project management software.")
+
+
+def get_valid_number(prompt, low, high):
+    """Get valid integer between low and high from user."""
+    number = low
+    is_valid_number = False
+    while not is_valid_number:
+        try:
+            number = int(input(prompt))
+            if number < low:
+                print(f"Number must be > {low - 1}")
+            elif number > high:
+                print("Invalid priority number")
+            else:
+                is_valid_number = True
+        except ValueError:
+            print("Invalid input - please enter a valid number")
+    return number
 
 
 main()
