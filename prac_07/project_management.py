@@ -57,6 +57,7 @@ def load_projects(filename=DEFAULT_FILENAME):
 
 
 def save_projects(projects):
+    """Save current projects to file."""
     save_file = input("What file would you like to save to? ")
     with open(save_file, "w") as output_file:
         print("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage", file=output_file)
@@ -81,7 +82,7 @@ def display_projects(projects):
 
 
 def filter_projects(projects):
-    """Filter projects by date."""
+    """Filter projects by date and display projects after date."""
     filter_date = input("Show projects that start after date (dd/mm/yyyy): ")
 
     if filter_date == "":
@@ -100,7 +101,7 @@ def filter_projects(projects):
 
 
 def add_projects(projects):
-    """Add new projects."""
+    """Add new projects into list of projects."""
     print("Let's add a new project")
     name = input("Name: ")
     start_date = input("Start date (dd/mm/yyyy): ")
@@ -112,7 +113,7 @@ def add_projects(projects):
 
 
 def update_projects(projects):
-    """Update projects."""
+    """Update projects and change percentage and priority."""
     for i, project in enumerate(projects):
         print(f"{i} {project}")
 
@@ -130,7 +131,7 @@ def update_projects(projects):
 
 
 def quit_projects(projects):
-    """Quit projects."""
+    """Quit projects and ask user if they want to save to file."""
     save_choice = input(f"Would you like to save to {DEFAULT_FILENAME}? ").upper()
     if save_choice == "Y":
         save_projects(projects)
