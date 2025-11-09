@@ -100,12 +100,12 @@ def update_projects(projects):
     for i, project in enumerate(projects):
         print(f"{i} {project}")
 
-    project_choice = int(input("Project Choice: "))
+    project_choice = get_valid_number("Project choice: ", 0, len(projects) - 1)
     selected_project = projects[project_choice]
     print(selected_project)
 
-    new_percentage = int(input("New Percentage: "))
-    new_priority = int(input("New Priority: "))
+    new_percentage = get_valid_number("New Percentage: ", 0, 100)
+    new_priority = get_valid_number("New Priority: ", 0, 10)
 
     if new_percentage != "":
         selected_project.completion_percentage = int(new_percentage)
@@ -115,7 +115,7 @@ def update_projects(projects):
 
 def quit_projects(projects):
     """Quit projects."""
-    save_choice = input(f"Would you like to save to {DEFAULT_FILENAME}? ")
+    save_choice = input(f"Would you like to save to {DEFAULT_FILENAME}? ").upper()
     if save_choice == "Y":
         save_projects(projects)
     print("Thank you for using custom-built project management software.")
@@ -131,7 +131,7 @@ def get_valid_number(prompt, low, high):
             if number < low:
                 print(f"Number must be > {low - 1}")
             elif number > high:
-                print("Invalid priority number")
+                print("Invalid number")
             else:
                 is_valid_number = True
         except ValueError:
