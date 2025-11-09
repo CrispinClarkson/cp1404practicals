@@ -2,7 +2,8 @@
 Estimated Time: 2:30 hours
 Actual Time:
 """
-import datetime
+from datetime import datetime
+from operator import attrgetter
 from prac_07.project import Project
 
 DEFAULT_FILENAME = "projects.txt"
@@ -49,7 +50,7 @@ def load_projects(filename=DEFAULT_FILENAME):
             priority = int(parts[2])
             cost_estimation = float(parts[3])
             completion_percentage = int(parts[4])
-            start_date = datetime.datetime.strptime(start_date, "%d/%m/%Y").date()
+            start_date = datetime.strptime(start_date, "%d/%m/%Y")
 
             projects.append(Project(name, start_date, priority, cost_estimation, completion_percentage))
     return projects
@@ -81,6 +82,21 @@ def display_projects(projects):
 
 def filter_projects(projects):
     """Filter projects by date."""
+    filter_date = input("Show projects that start after date (dd/mm/yyyy): ")
+
+    if filter_date == "":
+        print("No dates entered")
+        return
+
+    try:
+        filter_converted = datetime.strptime(filter_date, "%d/%m/%Y")
+    except ValueError:
+        print("Invalid date")
+        return
+
+    for project in sorted(projects, key=attrgetter("start_date")):
+        if project.start_date >= filter_converted:
+            print(project)
 
 
 def add_projects(projects):
@@ -88,11 +104,11 @@ def add_projects(projects):
     print("Let's add a new project")
     name = input("Name: ")
     start_date = input("Start date (dd/mm/yyyy): ")
-    start_date_converted = datetime.datetime.strptime(start_date, "%d/%m/%Y").date()
+    start_date_converted = datetime.strptime(start_date, "%d/%m/%Y")
     priority = get_valid_number("Priority: ", 0, 10)
     cost_estimation = float(input("Cost Estimate: $"))
     completion_percentage = int(input("Percent Complete: "))
-    projects.append(Project(name, start_date, priority, cost_estimation, completion_percentage))
+    projects.append(Project(name, start_date_converted, priority, cost_estimation, completion_percentage))
 
 
 def update_projects(projects):
@@ -105,7 +121,7 @@ def update_projects(projects):
     print(selected_project)
 
     new_percentage = get_valid_number("New Percentage: ", 0, 100)
-    new_priority = get_valid_number("New Priority: ", 0, 10)
+    new_priority = input("New Priority: ")
 
     if new_percentage != "":
         selected_project.completion_percentage = int(new_percentage)

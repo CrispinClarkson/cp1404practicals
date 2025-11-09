@@ -10,7 +10,8 @@ class Project:
 
     def __str__(self):
         """Return a string representation of the Project."""
-        return (f"{self.name}, start: {self.start_date}, priority {self.priority}, "
+        date_format = self.start_date.strftime('%d/%m/%Y')
+        return (f"{self.name}, start: {self.start_date.strftime('%d/%m/%y')}, priority {self.priority}, "
                 f"estimate: ${self.cost_estimation:.2f}, completion: {self.completion_percentage}%")
 
     def is_complete(self):
@@ -20,3 +21,7 @@ class Project:
     def __lt__(self, other):
         """Compare projects by priority."""
         return self.priority < other.priority
+
+    def __gt__(self, other):
+        """Compare projects by priority."""
+        return self.start_date > other.start_date
