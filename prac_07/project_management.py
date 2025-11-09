@@ -25,7 +25,7 @@ def main():
         elif choice == "D":
             display_projects(projects)
         elif choice == "F":
-            filter_projects()
+            filter_projects(projects)
         elif choice == "A":
             add_projects(projects)
         elif choice == "U":
@@ -34,7 +34,7 @@ def main():
             print("Invalid menu choice")
         print(MENU)
         choice = input(">>> ").upper()
-    quit_projects()
+    quit_projects(projects)
 
 
 def load_projects(filename=DEFAULT_FILENAME):
@@ -58,9 +58,10 @@ def load_projects(filename=DEFAULT_FILENAME):
 def save_projects(projects):
     save_file = input("What file would you like to save to? ")
     with open(save_file, "w") as output_file:
+        print("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage", file=output_file)
         for project in projects:
-            print(f"{project.name} {project.start_date.strftime('%d/%m/%Y')} {project.priority} {project.cost_estimation}"
-                  f"{project.completion_percentage}", file=output_file)
+            print(f"{project.name}\t{project.start_date.strftime('%d/%m/%Y')}\t{project.priority}"
+                  f"\t{project.cost_estimation}\t{project.completion_percentage}", file=output_file)
         print(f"{len(projects)} projects saved to {save_file}")
 
 
@@ -78,9 +79,8 @@ def display_projects(projects):
         print(f"  {project}")
 
 
-def filter_projects():
+def filter_projects(projects):
     """Filter projects by date."""
-    pass
 
 
 def add_projects(projects):
@@ -88,6 +88,7 @@ def add_projects(projects):
     print("Let's add a new project")
     name = input("Name: ")
     start_date = input("Start date (dd/mm/yyyy): ")
+    start_date_converted = datetime.datetime.strptime(start_date, "%d/%m/%Y").date()
     priority = int(input("Priority: "))
     cost_estimation = float(input("Cost Estimate: $"))
     completion_percentage = int(input("Percent Complete: "))
@@ -112,9 +113,12 @@ def update_projects(projects):
         selected_project.priority = int(new_priority)
 
 
-def quit_projects():
+def quit_projects(projects):
     """Quit projects."""
-    pass
+    save_choice = input(f"Would you like to save to {DEFAULT_FILENAME}? ")
+    if save_choice == "Y":
+        save_projects(projects)
+    print("Thank you for using custom-built project management software.")
 
 
 main()
