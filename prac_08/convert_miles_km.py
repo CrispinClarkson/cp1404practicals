@@ -17,24 +17,25 @@ class ConvertMilesToKmApp(App):
         self.root = Builder.load_file('convert_miles_km.kv')
         return self.root
 
-    def handle_calculation(self, text):
+    def handle_calculation(self):
         """Handle Kilometers conversion."""
-        miles = self.get_valid_miles(text)
+        miles = self.get_valid_miles()
         self.handle_update(miles)
 
-    def handle_increment(self, text, increment):
+    def handle_increment(self, increment):
         """Handle up/down button increments."""
-        miles = self.get_valid_miles(text) + increment
+        miles = self.get_valid_miles() + increment
         self.root.ids.input_miles.text = str(miles)
 
     def handle_update(self, miles):
         """Update display with conversion."""
         self.output_message = str(miles * MILES_TO_KM_CONVERSION)
 
-    def get_valid_miles(self, text):
+    def get_valid_miles(self):
         """Get valid miles from text."""
         try:
-            return float(text)
+            value = float(self.root.ids.input_miles.text)
+            return value
         except ValueError:
             return 0.0
 

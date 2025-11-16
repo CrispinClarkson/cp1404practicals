@@ -4,17 +4,17 @@ BoxLayout:
         TextInput:
             id: input_miles
             text: '34'
-            on_text: app.handle_calculation(self.text)
+            on_text: app.handle_calculation()
             font_size: 48
         BoxLayout:
             orientation: 'vertical'
             size_hint_x: 0.25
             Button:
                 text: 'Up'
-                on_press: app.handle_increment(input_miles.text, 1)
+                on_press: app.handle_increment(1)
             Button:
                 text: 'Down'
-                on_press: app.handle_increment(input_miles.text, -1)
+                on_press: app.handle_increment(-1)
 
     BoxLayout:
         orientation: 'vertical'
