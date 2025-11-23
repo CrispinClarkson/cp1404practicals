@@ -51,7 +51,7 @@ def choose_taxi(taxis):
         return taxis[taxi_choice]
     except IndexError:
         print("Invalid taxi choice")
-        return None
+        return None     # Return none to indicate invalid selection
     # print(current_taxi)
 
 

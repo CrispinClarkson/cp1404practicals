@@ -11,7 +11,8 @@ class UnreliableCar(Car):
     def drive(self, distance):
         """Drive the car by the given distance."""
         random_number = randint(1, 100)
-        if random_number >= self.reliability:
-            distance = 0
-        distance_driven = super().drive(distance)
-        return distance_driven
+        if random_number < self.reliability:
+            distance_driven = super().drive(distance)
+            return distance_driven
+        else:
+            return 0

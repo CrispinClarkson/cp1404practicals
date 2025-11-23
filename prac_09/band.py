@@ -18,5 +18,6 @@ class Band:
 
     def play(self):
         """Return which musician is currently playing."""
-        return "\n".join(musician.play() for musician in self.musicians)
+        for musician in self.musicians:
+            print(musician.play())
             
